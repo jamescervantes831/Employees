@@ -68,4 +68,20 @@ public class Employee {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	
+	/**this.id = id;
+		this.name = name;
+		this.department = department;
+		this.age = age;
+		this.yearsOfService = yearsOfService;
+		this.position = position;*/
+	@Override
+	public String toString() {
+		return "id= "+ this.id + "\n"+
+				"name= " + this.name + "\n"+
+				"department= " + this.department+ "\n"+
+				"age= "  + this.age+ "\n"+
+				"yearsOfService= " + this.yearsOfService + "\n"+
+				"position= " + this.position+ "\n";
+	}
 }

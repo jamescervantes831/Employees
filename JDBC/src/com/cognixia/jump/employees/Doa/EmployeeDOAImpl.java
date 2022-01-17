@@ -39,7 +39,7 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 	public Employee getEmployeeById(int id) {
 		Employee employee = new Employee();
 		try {
-			PreparedStatement statement = connection.prepareStatement("SELECT * FROM employees WHERE id = ?");
+			PreparedStatement statement = connection.prepareStatement("SELECT * FROM employees WHERE employee_id = ?");
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			
@@ -88,7 +88,7 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 		try {
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO employees"
 					+ " (employee_id, name, department, age, yearsOfService, position)"
-					+ " VALUES(null, ?, ?, ?,?, ?)");
+					+ " VALUES (null, ?, ?, ?,?, ?)");
 			statement.setString(1, emp.getName());
 			statement.setString(2, emp.getDepartment());
 			statement.setInt(3, emp.getAge());
@@ -136,7 +136,7 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 			
 		try {
 			
-			PreparedStatement statement = connection.prepareStatement("DELETE FROM employee WHERE employee_id=?");
+			PreparedStatement statement = connection.prepareStatement("DELETE FROM employees WHERE employee_id=?");
 			statement.setInt(1, emp.getId());
 			deleted = statement.executeUpdate();
 			statement.close();
