@@ -9,6 +9,7 @@ public interface EmployeeDOA {
 	public Employee getEmployeeByName(String name);
 	
 	public boolean addEmployee(Employee emp);
-	public boolean updateEmployee(Employee emp);
-	public boolean deleteEmployee(Employee emp);
+	public boolean updateEmployee(int id, Employee emp);
+	public boolean deleteEmployee(int id);
+	public boolean deleteEmployee(String name);
 }

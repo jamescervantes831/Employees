@@ -105,7 +105,7 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 	}
 
 	@Override
-	public boolean updateEmployee(Employee emp) {
+	public boolean updateEmployee(int id, Employee emp) {
 		int updated = 0;
 		try {
 			PreparedStatement statement = connection.prepareStatement("UPDATE employees"
@@ -118,7 +118,7 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 			statement.setInt(4, emp.getYearsOfService());
 			statement.setString(5, emp.getPosition());
 			
-			statement.setInt(6, emp.getId());
+			statement.setInt(6, id);
 			
 			updated = statement.executeUpdate();
 			
@@ -131,13 +131,32 @@ public class EmployeeDOAImpl implements EmployeeDOA {
 	}
 
 	@Override
-	public boolean deleteEmployee(Employee emp) {
+	public boolean deleteEmployee(String name) {
+		int deleted = 0;
+			
+		try {
+			
+			PreparedStatement statement = connection.prepareStatement("DELETE FROM employees WHERE name=?");
+			statement.setString(1, name);
+			deleted = statement.executeUpdate();
+			statement.close();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(deleted == 1) return true;
+		return false;
+	}
+	
+	@Override
+	public boolean deleteEmployee(int id) {
 		int deleted = 0;
 			
 		try {
 			
 			PreparedStatement statement = connection.prepareStatement("DELETE FROM employees WHERE employee_id=?");
-			statement.setInt(1, emp.getId());
+			statement.setInt(1, id);
 			deleted = statement.executeUpdate();
 			statement.close();
 			

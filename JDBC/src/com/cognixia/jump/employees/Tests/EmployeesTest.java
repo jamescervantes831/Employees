@@ -111,15 +111,15 @@ class EmployeesTest {
 		int id = employees.get(new Random().nextInt(employees.size())).getId();
 		
 		//execute
-		boolean complete = empDoa.updateEmployee(new Employee(
-							  id,//ID 
+		boolean complete = empDoa.updateEmployee(id, new Employee(
+							  0,//ID 
 							  name,
 							  department,
 							  new Random().nextInt(40)+21, //age 
 							  new Random().nextInt(20), //yearsOfService
 							  position));
 		
-		complete = empDoa.deleteEmployee(emp);
+		complete = empDoa.deleteEmployee(emp.getName());
 		//assert
 		assertTrue(complete);
 	}
