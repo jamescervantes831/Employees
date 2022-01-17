@@ -37,16 +37,4 @@ public class ConnectionManager {
 		
 		return connection;
 	}
-	
-	public static void TestConnection(){
-		
-		getConnection();
-		
-		try {
-			connection.close();
-			System.out.println("Connection was closed");
-		} catch (SQLException e) {
-			System.out.println("There was an exception trying to close the database.");
-		}
-	}
 }
